@@ -10,6 +10,7 @@ jenkins:
     - envVars:
         env:
           - key: JFR_LOCAL_WORKSPACE
+            # TODO(oleg_nenashev): This is a difference from https://github.com/jenkinsci/ci.jenkins.io-runner/blob/master/jenkins.yaml
             value: /github/workspace
           - key: PIPELINE_LIBRARY_SKIP_WINDOWS
             value: true
@@ -21,3 +22,9 @@ tool:
     installations:
     - home: "git"
       name: "Default"
+
+# Works around https://github.com/jenkinsci/jenkinsfile-runner/issues/359
+groovy:
+  - file: "/usr/share/jenkins/ref/init.groovy.d/System.groovy"
+  - file: "/usr/share/jenkins/ref/init.groovy.d/Tools.groovy"
+  - file: "/usr/share/jenkins/ref/init.groovy.d/PipelineLibrary.groovy"
