@@ -1,4 +1,4 @@
-FROM onenashev/ci.jenkins.io-runner
+FROM onenashev/ci.jenkins.io-runner:0.4.0
 
 VOLUME /github/workspace
 
